@@ -355,10 +355,5 @@ public class NewReg { //Methods behind New Registration
         return "Sorry, you cannot get your New Registration today. Please come back another time.";
     }
 
- public static void main(String args[]){
-	
-	NewReg exe = new NewReg();
-	System.out.println(exe.run()); //Outputs string value at end of branch
-	}
 
 }
