@@ -1,72 +1,45 @@
 package main;
 import java.util.Scanner;
 
-class RegistrationNode {
-    String registrationId;
-    RegistrationNode left, right;
-
-    public RegistrationNode(String registrationId) {
-        this.registrationId = registrationId;
-        this.left = this.right = null;
-    }
-}
-
 public class RenewReg {
-    private RegistrationNode root;
     Scanner input = new Scanner(System.in);
 
-    public RenewReg() {
-        root = null;
-    }
-
-    public void insertRegistrationId(String registrationId) { // method that inserts a new registration id
-        root = insertRec(root, registrationId);
-    }
-
-    private RegistrationNode insertRec(RegistrationNode root, String registrationId) {
-        if (root == null) {
-            root = new RegistrationNode(registrationId);
-            return root;
-        }
-        if (registrationId.compareTo(root.registrationId) < 0)
-            root.left = insertRec(root.left, registrationId);
-        else if (registrationId.compareTo(root.registrationId) > 0)
-            root.right = insertRec(root.right, registrationId);
-        return root;
-    }
-
-    private boolean searchRegistrationId(String registrationId) { // method to search for a registration id in bst
-        return searchRec(root, registrationId);
-    }
-
-    private boolean searchRec(RegistrationNode root, String registrationId) {
-        if (root == null) return false;
-        if (registrationId.equals(root.registrationId)) return true;
-        if (registrationId.compareTo(root.registrationId) < 0)
-            return searchRec(root.left, registrationId);
-        else
-            return searchRec(root.right, registrationId);
-    }
-
     public void renewRegistration() {
-        System.out.println("=== Vehicle Registration Renewal ===");
-        System.out.print("Enter your vehicle's registration ID: ");
-        String registrationId = input.nextLine();
+        System.out.println("=== DMV Registration Renewal ===");
 
-        if (searchRegistrationId(registrationId)) { // validates and renews the registration id
-            System.out.println("Renewing registration for ID: " + registrationId);
-            System.out.println("Registration renewed successfully.");
-        } else {
-            System.out.println("Invalid registration ID. Please try again.");
+        System.out.print("Upgrade to Real ID (yes/no)? "); // user decides on upgrading to real id
+        boolean upgradeToRealID = "yes".equalsIgnoreCase(input.nextLine());
+
+        System.out.print("Did you pass the vision test (pass/fail)? "); // user takes a vision test
+        boolean visionTestPassed = "pass".equalsIgnoreCase(input.nextLine());
+
+        System.out.print("Did you pass the knowledge test (pass/fail)? "); // user takes knowledge test
+        boolean knowledgeTestPassed = "pass".equalsIgnoreCase(input.nextLine());
+
+        int totalCost = calculateCosts(upgradeToRealID); // calculating costs with real id upgrade option
+
+        if (!visionTestPassed || !knowledgeTestPassed) { // checking if user passed both tests
+            System.out.println("You must pass both the vision and knowledge tests to renew your registration.");
+            return; // exits the method early if failure occurs
         }
+
+        System.out.println("All tests passed. Proceeding with registration renewal."); // proceeds with renewal if tests are passed
+        System.out.println("Total Cost: $" + totalCost);
+        System.out.println("Registration renewed successfully.");
+    }
+
+    private int calculateCosts(boolean upgradeToRealID) {
+        int baseCost = 45; // base renewal cost
+
+        if (upgradeToRealID) {
+            baseCost += 35; // assuming an additional $35 for real id upgrade
+        }
+
+        return baseCost;
     }
 
     public static void main(String[] args) {
         RenewReg renewReg = new RenewReg();
-        renewReg.insertRegistrationId("REG123");
-        renewReg.insertRegistrationId("REG456");
-        renewReg.insertRegistrationId("REG789");
-
         renewReg.renewRegistration();
     }
 }
