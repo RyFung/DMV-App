@@ -22,7 +22,8 @@ public class NewDL {
             myObj.close();
         }
     }
-    public static void main(String[] args) {
+    //public static void main(String[] args) {
+        public void newDL(){ //To be run in App
         // first node age
         TreeNode age = new TreeNode();
       age.question = "Are You Over 16? Pick A or B, A: yes. B: no.";
