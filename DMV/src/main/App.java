@@ -28,11 +28,15 @@ public class App { //Methods behind App
 		System.out.println("Type New or Renew");
 		String key = In.getKeys();
 		if(key.equalsIgnoreCase("New")){
-			String data = "method here"; //Set to method tree for New License
+			NewDL newDL = new NewDL();
+			newDL.newDL();
+			String data = "";
 			return data;
 		}
 		else if(key.equalsIgnoreCase("Renew")){
-			String data = "method here"; //Set to method tree for Renew License
+			RenewLicense renewLic = new RenewLicense(); // simple test run of the renewal process
+		    	renewLic.startLicenseRenewal();
+			String data = "";
 			return data;
 		}
 		System.out.println("Invalid option");
@@ -44,12 +48,15 @@ public class App { //Methods behind App
 		System.out.println("Type New or Renew");
 		String key = In.getKeys();
 		if(key.equalsIgnoreCase("New")){
-			String data = "method here"; //Set to method tree for New Registration
+			NewReg NewReg = new NewReg();
+			String data = NewReg.run(); //Set to method tree for New Registration
 			return data;
 		}
 		else if(key.equalsIgnoreCase("Renew")){
-			String data = "method here"; //Set to method tree for Renew Registration
-			return data;
+			RenewReg renewReg = new RenewReg();
+	        	renewReg.renewRegistration();
+	        	String data = "";
+	        	return data;
 		}
 		System.out.println("Invalid option");
 		String data = Registration(); //Loops Registration() method until New or Renew chosen
