@@ -1,12 +1,12 @@
 
-package Main;
+package main;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 import java.util.Random;
 
-public class renewLicense {
+public class RenewLicense {
 
     Scanner scanner = new Scanner(System.in);
 
@@ -101,7 +101,7 @@ public class renewLicense {
     }
           
     public static void main(String[] args) {
-        renewLicense renewLic = new renewLicense(); // simple test run of the renewal process
+        RenewLicense renewLic = new RenewLicense(); // simple test run of the renewal process
         renewLic.startLicenseRenewal();
     }
 }

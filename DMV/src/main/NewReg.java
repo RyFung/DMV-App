@@ -196,16 +196,19 @@ public class NewReg { //Methods behind New Registration
         System.out.println("Does your Commercial Vehicle haul another vehicle?");
         System.out.println("Please type \"Yes\" or \"No\": "); //splits into  GVW or CGW
         String key = input.nextLine();
+        
+        
         if (key.equalsIgnoreCase("No")) {
             String data = GVWCashOrCredit(); //Set to method tree for GVWCashOrCredit
             return data;
         } else if (key.equalsIgnoreCase("Yes")) {
             String data = CGWCashOrCredit(); //Set to method tree for CGWCashOrCredit
             return data;
-        }
+        } else{
         System.out.println("Invalid option");
-        String data = MotoInsur(); //Loops MedCV() method until Yes or No
+        String data = MedCV(); //Loops MedCV() method until Yes or No
         return data;
+        }
 
     }
 

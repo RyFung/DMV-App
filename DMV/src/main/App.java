@@ -1,12 +1,12 @@
 package main;
 
-public class App { //Methods behind App  
-	private Input In = new Input();
+public class App { //Methods behind App
+	private Input In = new Input(); //User input scanner for methods
 	String run(){
 		String data = start(); //Set to start method
 		return data;
 	}
-
+	
 	String start(){
 		System.out.println("Type License or Registration");
 		String key = In.getKeys();
@@ -35,7 +35,7 @@ public class App { //Methods behind App
 		}
 		else if(key.equalsIgnoreCase("Renew")){
 			RenewLicense renewLic = new RenewLicense(); // simple test run of the renewal process
-		    	renewLic.startLicenseRenewal();
+		    renewLic.startLicenseRenewal();
 			String data = "";
 			return data;
 		}
@@ -54,14 +54,13 @@ public class App { //Methods behind App
 		}
 		else if(key.equalsIgnoreCase("Renew")){
 			RenewReg renewReg = new RenewReg();
-	        	renewReg.renewRegistration();
-	        	String data = "";
-	        	return data;
+	        renewReg.renewRegistration();
+	        String data = "";
+	        return data;
 		}
 		System.out.println("Invalid option");
 		String data = Registration(); //Loops Registration() method until New or Renew chosen
 		return data;
 		
 	}
-	
 }

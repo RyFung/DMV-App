@@ -1,3 +1,5 @@
+package main;
+
 import java.util.Scanner;
 
 public class NewDL {
@@ -22,8 +24,9 @@ public class NewDL {
             myObj.close();
         }
     }
-    //public static void main(String[] args) {
-        public void newDL(){ //To be run in App
+   // public static void main(String[] args) {
+        
+        public void newDL(){
         // first node age
         TreeNode age = new TreeNode();
       age.question = "Are You Over 16? Pick A or B, A: yes. B: no.";
