@@ -72,7 +72,7 @@ public class NewReg { //Methods behind New Registration
         System.out.println("You selected Cash as your payment option.");
         System.out.println("Please input the price of your vehicle at time of purchase: ");
         price = input.nextFloat();
-        newRegFee = (int) ((price * 0.0065) + 80);
+        newRegFee = (int) ((price * 0.0065) + 80 + County() );
         String data = DPSuccess(); //Displays DPSuccess()
         return data;
 
@@ -82,7 +82,7 @@ public class NewReg { //Methods behind New Registration
         System.out.println("You selected Credit as your payment option.");
         System.out.println("Please input the price of your vehicle at time of purchase: ");
         price = input.nextFloat();
-        newRegFee = (int) ((price * 0.0068) + 80);
+        newRegFee = (int) ((price * 0.0068) + 80 + County() );
         String data = DPSuccess(); //Displays DPSuccess()
         return data;
 
@@ -149,7 +149,7 @@ public class NewReg { //Methods behind New Registration
         System.out.println("You selected Cash as your payment option.");
         System.out.println("Please input the price of your vehicle at time of purchase: ");
         price = input.nextFloat();
-        newRegFee = (int) ((price * 0.0065) + 80);
+        newRegFee = (int) ((price * 0.0065) + 80) + County() ;
         String data = MTSuccess(); //Displays MTSuccess()
         return data;
 
@@ -159,7 +159,7 @@ public class NewReg { //Methods behind New Registration
         System.out.println("You selected Credit as your payment option.");
         System.out.println("Please input the price of your vehicle at time of purchase: ");
         price = input.nextFloat();
-        newRegFee = (int) ((price * 0.0068) + 80);
+        newRegFee = (int) ((price * 0.0068) + 80) + County() ;
         String data = MTSuccess(); //Displays MTSuccess()
         return data;
 
@@ -196,19 +196,16 @@ public class NewReg { //Methods behind New Registration
         System.out.println("Does your Commercial Vehicle haul another vehicle?");
         System.out.println("Please type \"Yes\" or \"No\": "); //splits into  GVW or CGW
         String key = input.nextLine();
-        
-        
         if (key.equalsIgnoreCase("No")) {
             String data = GVWCashOrCredit(); //Set to method tree for GVWCashOrCredit
             return data;
         } else if (key.equalsIgnoreCase("Yes")) {
             String data = CGWCashOrCredit(); //Set to method tree for CGWCashOrCredit
             return data;
-        } else{
-        System.out.println("Invalid option");
-        String data = MedCV(); //Loops MedCV() method until Yes or No
-        return data;
         }
+        System.out.println("Invalid option");
+        String data = MotoInsur(); //Loops MedCV() method until Yes or No
+        return data;
 
     }
 
@@ -233,7 +230,7 @@ public class NewReg { //Methods behind New Registration
         System.out.println("You selected Cash as your payment option.");
         System.out.println("Please input the price of your vehicle at time of purchase: ");
         price = input.nextFloat();
-        newRegFee = (int) ((price * 0.0065) + 80);
+        newRegFee = (int) ((price * 0.0065) + 80) + County() ;
         String data = CVSuccess(); //Displays CVSuccess()
         return data;
 
@@ -243,7 +240,7 @@ public class NewReg { //Methods behind New Registration
         System.out.println("You selected Credit as your payment option.");
         System.out.println("Please input the price of your vehicle at time of purchase: ");
         price = input.nextFloat();
-        newRegFee = (int) ((price * 0.0068) + 80);
+        newRegFee = (int) ((price * 0.0068) + 80) + County() ;
         String data = CVSuccess(); //Displays CVSuccess()
         return data;
 
@@ -270,7 +267,7 @@ public class NewReg { //Methods behind New Registration
         System.out.println("You selected Cash as your payment option.");
         System.out.println("Please input the price of your vehicle at time of purchase: ");
         price = input.nextFloat();
-        newRegFee = (int) ((price * 0.0066) + 80);
+        newRegFee = (int) ((price * 0.0066) + 80) + County() ;
         String data = CVSuccess(); //Displays CVSuccess()
         return data;
 
@@ -280,7 +277,7 @@ public class NewReg { //Methods behind New Registration
         System.out.println("You selected Credit as your payment option.");
         System.out.println("Please input the price of your vehicle at time of purchase: ");
         price = input.nextFloat();
-        newRegFee = (int) ((price * 0.0069) + 80);
+        newRegFee = (int) ((price * 0.0069) + County() + 80);
         String data = CVSuccess(); //Displays CVSuccess()
         return data;
 
@@ -331,7 +328,7 @@ public class NewReg { //Methods behind New Registration
         System.out.println("You selected Cash as your payment option.");
         System.out.println("Please input the price of your vehicle at time of purchase: ");
         price = input.nextFloat();
-        newRegFee = (int) ((price * 0.0066) + GetCRVA() + 80);
+        newRegFee = (int) ((price * 0.0066) + GetCRVA() + County() + 80);
         String data = CVSuccess(); //Displays CVSuccess()
         return data;
 
@@ -341,7 +338,7 @@ public class NewReg { //Methods behind New Registration
         System.out.println("You selected Credit as your payment option.");
         System.out.println("Please input the price of your vehicle at time of purchase: ");
         price = input.nextFloat();
-        newRegFee = (int) ((price * 0.0069) + GetCRVA() + 80);
+        newRegFee = (int) ((price * 0.0069) + GetCRVA() + County() + 80);
         String data = CVSuccess(); //Displays CVSuccess()
         return data;
 
@@ -352,11 +349,74 @@ public class NewReg { //Methods behind New Registration
         return data;
 
     }
+    
+    
+//County tax calculation
+    double County() {
+        System.out.println("Alameda, Antioch, Arcadia, Bakersfield, Burbank, Capitola, Chico, Concord, Fairfield, Fresno");
+        System.out.println("Glendale, Loomis, Mount Shasta, Paradise, Sacramento, San Fernando, San Jose, Santa Cruz, Wheatland");
+        System.out.println("Please enter \"Other\" if your county is not listed above.");
+        System.out.println("Please input your county of residence from the above list: ");
+        String key = input.nextLine();
+         if (key.equalsIgnoreCase("Alameda") 
+                 || key.equalsIgnoreCase("Arcadia")
+                 || key.equalsIgnoreCase("Burbank")
+                 || key.equalsIgnoreCase("Glendale")
+                 || key.equalsIgnoreCase("San Fernando")) {
+            double data = tax1(); //calculate county fee
+            return data;
+        } else if (key.equalsIgnoreCase("Antioch") 
+                 || key.equalsIgnoreCase("Capitola")
+                 || key.equalsIgnoreCase("Concord")
+                 || key.equalsIgnoreCase("San Jose")
+                 || key.equalsIgnoreCase("Santa Cruz")) {
+            double data = tax2(); //calculate county fee
+            return data;
+        } else if (key.equalsIgnoreCase("Bakersfield") 
+                 || key.equalsIgnoreCase("Chico")
+                 || key.equalsIgnoreCase("Fairfield")
+                 || key.equalsIgnoreCase("Fresno")
+                 || key.equalsIgnoreCase("Sacramento")) {
+            double data = tax3(); //calculate county fee
+            return data;
+        }else if (key.equalsIgnoreCase("Other") 
+                 || key.equalsIgnoreCase("Loomis")
+                 || key.equalsIgnoreCase("Mount Shasta")
+                 || key.equalsIgnoreCase("Paradise")
+                 || key.equalsIgnoreCase("Wheatland")) {
+            double data = tax4(); //calculate county fee
+            return data;
+        }
+        double data = County(); //loops County() if valid input is not given
+        return data;
+    }
+    
+
+    double tax1(){
+        double tax = 0.10 * newRegFee;
+        return tax;
+    }
+    
+    double tax2(){
+        double tax = 0.09 * newRegFee;
+        return tax;
+    }
+    
+     double tax3(){
+        double tax = 0.08 * newRegFee;
+        return tax;
+    }
+     
+      double tax4(){
+        double tax = 0.07 * newRegFee;
+        return tax;
+    }
+      
+      
 
 //New Reg failure message
     String endNewReg() {
         return "Sorry, you cannot get your New Registration today. Please come back another time.";
     }
-
 
 }
