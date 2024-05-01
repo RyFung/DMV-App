@@ -1,0 +1,2 @@
+John Doe*Password123*457.4763999999998*true*true*Sacramento*false
+Mary Sue*LittleLamb*867.5584*false*true*Fresno*true
