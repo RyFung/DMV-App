@@ -1,9 +1,0 @@
-John Doe*Password123*457.4763999999998*true*true*Sacramento*false
-Mary Sue*LittleLamb*922.5584*false*true*Fresno*true
-Dom Fry*Symphony*2717.8545999999988*true*true*Santa Cruz*true
-Cody Fera*Breathe*0.0*false*false*Bakersfield*false
-Wheatly*Grain*65.0*true*false*Wheatland*true
-Orca*Seaworld*711.9949999999999*false*true*Arcadia*true
-Cosmo*Graph*0.0*false*false*Sacramento*false
-Someone*Password*1191.996*false*true*Sacramento*false
-ThatMan*Gears*453.1766*true*true*Fresno*true
