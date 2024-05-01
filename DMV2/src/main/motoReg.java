@@ -22,7 +22,14 @@ public class motoReg extends JFrame{
 	        ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
 	        setIconImage(icon.getImage());
 			
-			JPanel motoReg = new JPanel(new GridLayout(5,2));
+	        JPanel textPanel = new JPanel(new BorderLayout());
+	        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+	        JLabel welcome = new JLabel("Motocycle Registration");
+	        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+	        textPanel.add(welcome,BorderLayout.NORTH);
+	        
+			JPanel motoReg = new JPanel(new GridLayout(6,2));
+			motoReg.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
 			JTextField price = new JTextField();
 			String[] bool = {"No", "Yes"};
 			JComboBox<String> License = new JComboBox<>(bool);
@@ -33,18 +40,30 @@ public class motoReg extends JFrame{
 			JButton Confirm = new JButton("Confirm");
 			JButton backMoto = new JButton("Go Back");
 			
-			motoReg.add(new JLabel("Vehicle Price:"));
-			motoReg.add(price);
-			motoReg.add(new JLabel("Do you have a Motorcycle License?"));
-			motoReg.add(License);
-			motoReg.add(new JLabel("Is your Motocycle Insured?"));
-			motoReg.add(Insurance);
-			motoReg.add(new JLabel("Payment Type:"));
-			motoReg.add(payType);
-			motoReg.add(backMoto);
-			motoReg.add(Confirm);
+			JLabel priceprompt = new JLabel("Vehicle Price: $");
+			priceprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+			JLabel licprompt = new JLabel("Do you have a Motocyle License? ");
+			licprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+			JLabel insurprompt = new JLabel("Is your Motorcycle Insured?");
+			insurprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+			JLabel payprompt = new JLabel("Payment Type: ");
+			payprompt.setHorizontalAlignment(SwingConstants.RIGHT);
 			
-			add(motoReg);
+			motoReg.add(priceprompt);
+			motoReg.add(price);
+			motoReg.add(licprompt);
+			motoReg.add(License);
+			motoReg.add(insurprompt);
+			motoReg.add(Insurance);
+			motoReg.add(payprompt);
+			motoReg.add(payType);
+			motoReg.add(new JLabel());
+			motoReg.add(Confirm);
+			motoReg.add(new JLabel());
+			motoReg.add(backMoto);
+			
+			textPanel.add(motoReg);
+			add(textPanel);
 			
 			Confirm.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {

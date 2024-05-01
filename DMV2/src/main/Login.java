@@ -21,15 +21,29 @@ public class Login extends JFrame{
         ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
         setIconImage(icon.getImage());
         
+        JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+        JLabel welcome = new JLabel("Welcome to the Online DMV Assist");
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome,BorderLayout.NORTH);
+        
+        
+        
+        
         JPanel loginPanel = new JPanel(new GridLayout(5,2));
+        loginPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
 		JTextField nameField = new JTextField();
 		JPasswordField passField = new JPasswordField();
 		JButton login = new JButton("Login");
 		JButton createAcc = new JButton("Create an Account");
+		JLabel userprompt = new JLabel("Username: ");
+	    userprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel passprompt = new JLabel("Password: ");
+		passprompt.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		loginPanel.add(new JLabel("Username:"));
+		loginPanel.add(userprompt);
 		loginPanel.add(nameField);
-		loginPanel.add(new JLabel("Password:"));
+		loginPanel.add(passprompt);
 		loginPanel.add(passField);
 		loginPanel.add(new JLabel());
 		loginPanel.add(login);
@@ -38,7 +52,8 @@ public class Login extends JFrame{
 		loginPanel.add(new JLabel());
 		loginPanel.add(createAcc);
 		
-		add(loginPanel);
+		textPanel.add(loginPanel,BorderLayout.CENTER);
+		add(textPanel);
 		
 		login.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

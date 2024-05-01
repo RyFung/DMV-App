@@ -22,7 +22,14 @@ public class coveReg extends JFrame{
         ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
         setIconImage(icon.getImage());
 		
-		JPanel coveReg = new JPanel(new GridLayout(5,2));
+        JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+        JLabel welcome = new JLabel("Commercial Vehicle Registration");
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome,BorderLayout.NORTH);
+        
+		JPanel coveReg = new JPanel(new GridLayout(6,2));
+		coveReg.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
 		JTextField price = new JTextField();
 		JTextField weight = new JTextField();
 		String[] bool = {"No", "Yes"};
@@ -31,19 +38,31 @@ public class coveReg extends JFrame{
 		JComboBox<String> payType = new JComboBox<>(type);
 		JButton Confirm = new JButton("Confirm");
 		JButton backDepu = new JButton("Go Back");
+		JLabel priceprompt = new JLabel("Vehicle Price: $");
+		priceprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel weightprompt = new JLabel("Vehicle Weight");
+		weightprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel haulprompt = new JLabel("Does your Commecrial Vehicle haul another vehicle?");
+		haulprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel payprompt = new JLabel("Payment Type: ");
+		payprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+				
 		
-		coveReg.add(new JLabel("Vehicle Price:"));
+		coveReg.add(priceprompt);
 		coveReg.add(price);
-		coveReg.add(new JLabel("Vehicle Weight:"));
+		coveReg.add(weightprompt);
 		coveReg.add(weight);
-		coveReg.add(new JLabel("Does your Commercial Vehicle haul another vehicle?"));
+		coveReg.add(haulprompt);
 		coveReg.add(Haul);
-		coveReg.add(new JLabel("Payment Type:"));
+		coveReg.add(payprompt);
 		coveReg.add(payType);
-		coveReg.add(backDepu);
+		coveReg.add(new JLabel());
 		coveReg.add(Confirm);
+		coveReg.add(new JLabel());
+		coveReg.add(backDepu);
 		
-		add(coveReg);
+		textPanel.add(coveReg);
+		add(textPanel);
 		
 		Confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

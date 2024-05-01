@@ -22,16 +22,26 @@ public class HighCV extends JFrame{
         ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
         setIconImage(icon.getImage());
 		
+        JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+        JLabel welcome = new JLabel("Combined Haul and Vehicle Registration");
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome,BorderLayout.NORTH);
+        
 		JPanel highCV = new JPanel(new GridLayout(2,2));
+		highCV.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
 		JTextField comboWeight = new JTextField();
 		JButton Confirm = new JButton("Confirm");
+		JLabel weightprompt = new JLabel("Heaviest Combined Gross Weight of Vehicle: ");
+		weightprompt.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		highCV.add(new JLabel("Heaviest Combined Gross Weight of Vehicle:"));
+		highCV.add(weightprompt);
 		highCV.add(comboWeight);
 		highCV.add(new JLabel());
 		highCV.add(Confirm);
 		
-		add(highCV);
+		textPanel.add(highCV);
+		add(textPanel);
 		
 		Confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

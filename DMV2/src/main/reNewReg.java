@@ -21,7 +21,14 @@ public class reNewReg extends JFrame{
         ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
         setIconImage(icon.getImage());
 		
-		JPanel reNewReg = new JPanel(new GridLayout(4,2));
+        JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+        JLabel welcome = new JLabel("Renew Registration");
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome,BorderLayout.NORTH);
+        
+		JPanel reNewReg = new JPanel(new GridLayout(5,2));
+		reNewReg.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
 		String[] upgrade = {"No", "Yes"};
 		JComboBox<String> real = new JComboBox<>(upgrade);
 		String[] bool1 = {"No", "Yes"};
@@ -31,16 +38,27 @@ public class reNewReg extends JFrame{
 		JButton Confirm = new JButton("Confirm");
 		JButton backreNReg = new JButton("Go Back");
 		
-		reNewReg.add(new JLabel("Do you want to upgrade to Real ID?"));
-		reNewReg.add(real);
-		reNewReg.add(new JLabel("Did you pass a Vision Test??"));
-		reNewReg.add(Vision);
-		reNewReg.add(new JLabel("Did you pass a Knowledge Test?"));
-		reNewReg.add(Knowledge);
-		reNewReg.add(backreNReg);
-		reNewReg.add(Confirm);
+		 JLabel upgrprompt = new JLabel("Do you want to upgrade to Real ID? ");
+	        upgrprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+	        JLabel visprompt = new JLabel("Did you pass a Vision Test? ");
+	        visprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+	        JLabel knowprompt = new JLabel("Did you pass a Knowledge Test? ");
+	        knowprompt.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		add(reNewReg);
+		
+		reNewReg.add(upgrprompt);
+		reNewReg.add(real);
+		reNewReg.add(visprompt);
+		reNewReg.add(Vision);
+		reNewReg.add(knowprompt);
+		reNewReg.add(Knowledge);
+		reNewReg.add(new JLabel());
+		reNewReg.add(Confirm);
+		reNewReg.add(new JLabel());
+		reNewReg.add(backreNReg);
+		
+		textPanel.add(reNewReg);
+		add(textPanel);
 		
 		Confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

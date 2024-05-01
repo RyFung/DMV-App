@@ -19,25 +19,43 @@ public class newLic extends JFrame{
         ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
         setIconImage(icon.getImage());
 		
-        JPanel newLic = new JPanel(new GridLayout(4,2));
+        JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+        JLabel welcome = new JLabel("New License Registration");
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome,BorderLayout.NORTH);
+        
+        JPanel newLic = new JPanel(new GridLayout(5,2));
+        newLic.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
         JTextField Age = new JTextField();
         String[] bool = {"No","Yes"};
         JComboBox<String>resi = new JComboBox<>(bool);
-        String[] bool2 = {"Yes","No"};
+        String[] bool2 = {"No","Yes"};
         JComboBox<String>Test = new JComboBox<>(bool2);
 		JButton backNLic = new JButton("Go Back");
 		JButton confirm = new JButton("Confirm");
 		
-		newLic.add(new JLabel("Age:"));
-		newLic.add(Age);
-		newLic.add(new JLabel("Do you live in California?"));
-		newLic.add(resi);
-		newLic.add(new JLabel("Did you pass the written and practical test?"));
-		newLic.add(Test);
-		newLic.add(backNLic);
-		newLic.add(confirm);
+		JLabel ageprompt = new JLabel("Age: ");
+		ageprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel resiprompt = new JLabel("Do you live in California? ");
+		resiprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel testprompt = new JLabel("Did you pass the written and practical test? ");
+		testprompt.setHorizontalAlignment(SwingConstants.RIGHT);
 		
-		add(newLic);
+		
+		newLic.add(ageprompt);
+		newLic.add(Age);
+		newLic.add(resiprompt);
+		newLic.add(resi);
+		newLic.add(testprompt);
+		newLic.add(Test);
+		newLic.add(new JLabel());
+		newLic.add(confirm);
+		newLic.add(new JLabel());
+		newLic.add(backNLic);
+		
+		textPanel.add(newLic);
+		add(textPanel);
 		
 		 confirm.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {

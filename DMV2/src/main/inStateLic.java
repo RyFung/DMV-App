@@ -22,7 +22,14 @@ public class inStateLic extends JFrame{
         ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
         setIconImage(icon.getImage());
         
+        JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+        JLabel welcome = new JLabel("In-State License Registration");
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome,BorderLayout.NORTH);
+        
 		JPanel inStateLic = new JPanel(new GridLayout(4,2));
+		inStateLic.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
 		String[] bool = {"No", "Yes"};
 		JComboBox<String> Know = new JComboBox<>(bool);
 		String[] bool2 = {"No", "Yes"};
@@ -31,16 +38,25 @@ public class inStateLic extends JFrame{
 		JComboBox<String> Upgr = new JComboBox<>(bool3);
 		JButton Confirm = new JButton("Confirm");
 		
-		inStateLic.add(new JLabel("Did you pass a Written Test?"));
+		JLabel knowprompt = new JLabel("Did you pass a Written Test? ");
+		knowprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel pracprompt = new JLabel("Did you pass a Practical Driving Test? ");
+		pracprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel upgrprompt = new JLabel("Upgrade to Real ID? ");
+		upgrprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		
+		
+		inStateLic.add(knowprompt);
 		inStateLic.add(Know);
-		inStateLic.add(new JLabel("Did you pass a Practical Driving Test?"));
+		inStateLic.add(pracprompt);
 		inStateLic.add(Prac);
-		inStateLic.add(new JLabel("Upgrade to Real ID?"));
+		inStateLic.add(upgrprompt);
 		inStateLic.add(Upgr);
 		inStateLic.add(new JLabel());
 		inStateLic.add(Confirm);
 		
-		add(inStateLic);
+		textPanel.add(inStateLic);
+		add(textPanel);
 		
 		 Confirm.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {

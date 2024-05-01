@@ -21,21 +21,33 @@ public class payBal extends JFrame {
 	     ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
 	     setIconImage(icon.getImage());
 	     
+	     JPanel textPanel = new JPanel(new BorderLayout());
+	        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+	        JLabel welcome = new JLabel("Current Balance: $"+df.format(dmvBase.get(dmvBase.tracker).getBalance()));
+	        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+	        textPanel.add(welcome,BorderLayout.NORTH);
+	     
 	     JPanel payBal = new JPanel(new GridLayout(3,2));
+	     payBal.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
 	     JTextField Pay = new JTextField();
 	     JButton Confirm = new JButton("Confirm");
 	     JButton backPay = new JButton("Go Back");
 	     
-	     payBal.add(new JLabel("Current Balance:"));
-	     payBal.add(new JLabel(""+df.format(dmvBase.get(dmvBase.tracker).getBalance())));
-	    
+	     JPanel hold1 = new JPanel(new GridLayout(2,1));
+	     hold1.add(Confirm);
+	     hold1.add(backPay);
 	     
-	     payBal.add(new JLabel("Pay Amount:"));
+	     JLabel payprompt = new JLabel("Pay Amount: $");
+	     payprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+	     payBal.add(payprompt);
 	     payBal.add(Pay);
-	     payBal.add(backPay);
-	     payBal.add(Confirm);
+	     payBal.add(new JLabel());
+	     payBal.add(hold1);
+	     payBal.add(new JLabel());
+	     payBal.add(new JLabel());
 	     
-	     add(payBal);
+	     textPanel.add(payBal);
+	     add(textPanel);
 		
 	     Confirm.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent e) {

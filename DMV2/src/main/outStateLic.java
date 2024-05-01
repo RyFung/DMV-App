@@ -23,7 +23,14 @@ public class outStateLic extends JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
         setIconImage(icon.getImage());
         
+        JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+        JLabel welcome = new JLabel("Out-State License Registration");
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome,BorderLayout.NORTH);
+        
 		JPanel outStateLic = new JPanel(new GridLayout(4,2));
+		outStateLic.setBorder(BorderFactory.createEmptyBorder(60, 0, 60, 400));
 		String[] bool = {"No", "Yes"};
 		JComboBox<String> Resi = new JComboBox<>(bool);
 		String[] bool2 = {"No", "Yes"};
@@ -32,16 +39,24 @@ public class outStateLic extends JFrame {
 		JComboBox<String> Upgr = new JComboBox<>(bool3);
 		JButton Confirm = new JButton("Confirm");
 		
-		outStateLic.add(new JLabel("Are you a valid Resident of California?"));
+		JLabel resiprompt = new JLabel("Are you a valid Resident of California? ");
+		resiprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel licprompt = new JLabel("Do you have a valid License from Another State? ");
+		licprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel upgrprompt = new JLabel("Upgrade to Real ID? ");
+		upgrprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		
+		outStateLic.add(resiprompt);
 		outStateLic.add(Resi);
-		outStateLic.add(new JLabel("Do you have a valid License from Another State?"));
+		outStateLic.add(licprompt);
 		outStateLic.add(Lic);
-		outStateLic.add(new JLabel("Upgrade to Real ID?"));
+		outStateLic.add(upgrprompt);
 		outStateLic.add(Upgr);
 		outStateLic.add(new JLabel());
 		outStateLic.add(Confirm);
 		
-		add(outStateLic);
+		textPanel.add(outStateLic);
+		add(textPanel);
 		
 		 Confirm.addActionListener(new ActionListener() {
 	            public void actionPerformed(ActionEvent e) {

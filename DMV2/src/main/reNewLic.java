@@ -12,7 +12,8 @@ public class reNewLic extends JFrame {
 	DecimalFormat df = new DecimalFormat("#.##");
 	
 	public reNewLic(DMVBase dmvBase) {
-		JPanel reNewLic = new JPanel(new GridLayout(4,2));
+		JPanel reNewLic = new JPanel(new GridLayout(5,2));
+		reNewLic.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
 		setTitle("DMV Online App v2");
         setSize(1250, 700);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,6 +23,12 @@ public class reNewLic extends JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
         setIconImage(icon.getImage());
 		
+        JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+        JLabel welcome = new JLabel("Renew Registration");
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome,BorderLayout.NORTH);
+        
         JTextField cardNumber = new JTextField();
         JTextField expDate = new JTextField();
         String[] licTypes = {"Non-Commercial", "Commercial"};
@@ -29,16 +36,27 @@ public class reNewLic extends JFrame {
         JButton backreNLic = new JButton("Go Back");
         JButton confirm = new JButton("Confirm");
         
-        reNewLic.add(new JLabel("Card Number:"));
-        reNewLic.add(cardNumber);
-        reNewLic.add(new JLabel("Expiration Date in MM-DD-YYYY:"));
-        reNewLic.add(expDate);
-        reNewLic.add(new JLabel("License Type:"));
-        reNewLic.add(licClass);
-        reNewLic.add(backreNLic);
-        reNewLic.add(confirm);
+        JLabel cardprompt = new JLabel("Card Number: ");
+        cardprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+        JLabel dateprompt = new JLabel("Expiration Date in MM-DD-YYYY: ");
+        dateprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+        JLabel licprompt = new JLabel("License Type: ");
+        licprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+       
         
-        add(reNewLic);
+        reNewLic.add(cardprompt);
+        reNewLic.add(cardNumber);
+        reNewLic.add(dateprompt);
+        reNewLic.add(expDate);
+        reNewLic.add(licprompt);
+        reNewLic.add(licClass);
+        reNewLic.add(new JLabel());
+        reNewLic.add(confirm);
+        reNewLic.add(new JLabel());
+        reNewLic.add(backreNLic);
+        
+        textPanel.add(reNewLic);
+        add(textPanel);
         
         confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

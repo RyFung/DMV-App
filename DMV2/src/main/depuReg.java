@@ -22,7 +22,14 @@ public class depuReg extends JFrame{
         ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
         setIconImage(icon.getImage());
 		
-		JPanel depuReg = new JPanel(new GridLayout(4,2));
+        JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+        JLabel welcome = new JLabel("Department Vehicle Registration");
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome,BorderLayout.NORTH);
+        
+		JPanel depuReg = new JPanel(new GridLayout(5,2));
+		depuReg.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
 		JTextField price = new JTextField();
 		String[] bool = {"No", "Yes"};
 		JComboBox<String> Smog = new JComboBox<>(bool);
@@ -30,16 +37,27 @@ public class depuReg extends JFrame{
 		JComboBox<String> payType = new JComboBox<>(type);
 		JButton Confirm = new JButton("Confirm");
 		JButton backDepu = new JButton("Go Back");
-		depuReg.add(new JLabel("Vehicle Price:"));
-		depuReg.add(price);
-		depuReg.add(new JLabel("Did you get and pass a Smog Check?"));
-		depuReg.add(Smog);
-		depuReg.add(new JLabel("Payment Type:"));
-		depuReg.add(payType);
-		depuReg.add(backDepu);
-		depuReg.add(Confirm);
 		
-		add(depuReg);
+		JLabel priceprompt = new JLabel("Vehicle Price: $");
+		priceprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel smogprompt = new JLabel("Did you get and pass a Smog Check? ");
+		smogprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		JLabel payprompt = new JLabel("Payment Type: ");
+		payprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+		
+		depuReg.add(priceprompt);
+		depuReg.add(price);
+		depuReg.add(smogprompt);
+		depuReg.add(Smog);
+		depuReg.add(payprompt);
+		depuReg.add(payType);
+		depuReg.add(new JLabel());
+		depuReg.add(Confirm);
+		depuReg.add(new JLabel());
+		depuReg.add(backDepu);
+		
+		textPanel.add(depuReg);
+		add(textPanel);
 		
 		Confirm.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

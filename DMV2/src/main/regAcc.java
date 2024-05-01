@@ -19,25 +19,39 @@ public class regAcc extends JFrame{
      ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
      setIconImage(icon.getImage());
      
+     JPanel textPanel = new JPanel(new BorderLayout());
+     textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+     JLabel welcome = new JLabel("Create an Account");
+     welcome.setHorizontalAlignment(SwingConstants.CENTER);
+     textPanel.add(welcome,BorderLayout.NORTH);
+     
      JPanel regAccPanel = new JPanel(new GridLayout(6,2));
+     regAccPanel.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
      JTextField newNameField = new JTextField();
  	 JPasswordField newPassField = new JPasswordField();
  	 JPasswordField confirmPassField = new JPasswordField();
  	 JButton create = new JButton("Create Account");
  	 JButton backCreate = new JButton("Go Back");
+ 	 JLabel userprompt = new JLabel("Username: ");
+ 	 JLabel passprompt = new JLabel("Password: ");
+ 	 JLabel conpassprompt = new JLabel("Confirm Password: ");
+ 	userprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+ 	passprompt.setHorizontalAlignment(SwingConstants.RIGHT);
+ 	conpassprompt.setHorizontalAlignment(SwingConstants.RIGHT);
  	 
- 	regAccPanel.add(new JLabel("Username:"));
+ 	regAccPanel.add(userprompt);
 	regAccPanel.add(newNameField);
-	regAccPanel.add(new JLabel("Password:"));
+	regAccPanel.add(passprompt);
 	regAccPanel.add(newPassField);
-	regAccPanel.add(new JLabel("Confirm Password:"));
+	regAccPanel.add(conpassprompt);
 	regAccPanel.add(confirmPassField);
 	regAccPanel.add(new JLabel());
 	regAccPanel.add(create);
 	regAccPanel.add(new JLabel());
 	regAccPanel.add(backCreate);
 	
-	add(regAccPanel);
+	textPanel.add(regAccPanel,BorderLayout.CENTER);
+	add(textPanel);
  	 
 	create.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e) {

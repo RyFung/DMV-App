@@ -20,7 +20,7 @@ public class newReg extends JFrame{
         //DMV icon
         ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
         setIconImage(icon.getImage());
-		
+        
         JPanel newReg = new JPanel(new BorderLayout());
         JButton coveReg = new JButton("Commercial");
         JButton depuReg = new JButton("Department");
@@ -28,6 +28,11 @@ public class newReg extends JFrame{
         JButton backNReg = new JButton("Go Back");
         JLabel prompt = new JLabel("Please Select Your Vehicle Type");
         prompt.setHorizontalAlignment(SwingConstants.CENTER);
+        
+        coveReg.setPreferredSize(new Dimension(400,500));
+        depuReg.setPreferredSize(new Dimension(400,500));
+        motoReg.setPreferredSize(new Dimension(400,500));
+        backNReg.setPreferredSize(new Dimension(300,80));
        
         newReg.add(prompt,BorderLayout.NORTH);
         newReg.add(coveReg,BorderLayout.EAST);

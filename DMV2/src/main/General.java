@@ -16,22 +16,38 @@ public class General extends JFrame {
 		setSize(1250, 700);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false); //Prevents resizing, added instead of re-scaling algorithm
+		
     
 		//DMV icon
 		ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
 		setIconImage(icon.getImage());
 		
+		JPanel textPanel = new JPanel(new BorderLayout());
+        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+        JLabel welcome = new JLabel("DMV Online App v2: Welcome "+dmvBase.get(dmvBase.tracker).getUser());
+        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+        textPanel.add(welcome,BorderLayout.NORTH);
+		
 		JPanel General = new JPanel(new GridLayout(3,3));
+		General.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		JButton newLic = new JButton("Apply for New License");
 		JButton reNewLic = new JButton("Renew License");
 		JButton newReg = new JButton("Apply for New Vehicle Registration");
 		JButton reNewReg = new JButton("Renew Registration");
 		JButton checkBal = new JButton("Check Balance");
 		JButton payBal = new JButton("Pay Balance");
-		JButton County = new JButton("Change County");
 		
+		JButton County = new JButton("Change County");
+		County.setPreferredSize(new Dimension(100,50));
 		
 		JButton signOut = new JButton("Sign Out");
+		signOut.setPreferredSize(new Dimension(100,50));
+		
+		JPanel hold1 = new JPanel(new GridLayout(1,2));
+		hold1.setBorder(BorderFactory.createEmptyBorder(100,100,0,0));
+		
+		hold1.add(County);
+		hold1.add(signOut);
 		
 		General.add(newLic);
 		General.add(newReg);
@@ -40,10 +56,12 @@ public class General extends JFrame {
 		General.add(reNewReg);
 		General.add(payBal);
 		General.add(new JLabel());
-		General.add(County);
-		General.add(signOut);
+		General.add(new JLabel());
+		General.add(hold1);
 		
-		add(General);
+		
+		textPanel.add(General);
+		add(textPanel);
 		
 		
 		

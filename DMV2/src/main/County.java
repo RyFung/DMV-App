@@ -18,18 +18,34 @@ public class County extends JFrame {
 	     ImageIcon icon = new ImageIcon(getClass().getResource("DMV-Logo.png"));
 	     setIconImage(icon.getImage());
 	     
+	     JPanel textPanel = new JPanel(new BorderLayout());
+	        textPanel.setBorder(BorderFactory.createEmptyBorder(60,0,0,0));
+	        JLabel welcome = new JLabel("Current County: "+dmvBase.get(dmvBase.tracker).getCounty());
+	        welcome.setHorizontalAlignment(SwingConstants.CENTER);
+	        textPanel.add(welcome,BorderLayout.NORTH);
+	     
 	     JPanel County = new JPanel(new GridLayout(3,2));
+	     County.setBorder(BorderFactory.createEmptyBorder(20, 0, 60, 400));
 	     JTextField county = new JTextField();
 	     JButton Confirm = new JButton("Confirm");
 	     JButton backCount = new JButton("Go Back");
-	     County.add(new JLabel("Current County:"));
-	     County.add(new JLabel(dmvBase.get(dmvBase.tracker).getCounty()));
-	     County.add(new JLabel("New County:"));
-	     County.add(county);
-	     County.add(backCount);
-	     County.add(Confirm);
 	     
-	     add(County);
+	     JLabel newcountyPrompt = new JLabel("New County: ");	
+	     newcountyPrompt.setHorizontalAlignment(SwingConstants.RIGHT);
+	     
+	     JPanel hold1 = new JPanel(new GridLayout(2,1));
+	     hold1.add(Confirm);
+	     hold1.add(backCount);
+	     
+	     County.add(newcountyPrompt);
+	     County.add(county);
+	     County.add(new JLabel());
+	     County.add(hold1);
+	     County.add(new JLabel());
+	     County.add(new JLabel());
+	     
+	     textPanel.add(County);
+	     add(textPanel);
 		
 	     Confirm.addActionListener(new ActionListener() {
 	         public void actionPerformed(ActionEvent e) {
